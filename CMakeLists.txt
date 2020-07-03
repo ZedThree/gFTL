@@ -25,7 +25,7 @@ if (PFUNIT_FOUND)
     LANGUAGES Fortran
     )
 
-  set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${GFTL_SOURCE_DIR}/cmake_utils")
+  set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${GFTL_SOURCE_DIR}/cmake")
   include (${CMAKE_Fortran_COMPILER_ID} RESULT_VARIABLE found)
   include (CheckFortranSource)
   include (CheckCompilerCapabilities)
@@ -40,11 +40,11 @@ endif ()
 
 set(cmake_dir lib/cmake/GFTL)
 include (CMakePackageConfigHelpers)
-configure_package_config_file (GFTLConfig.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/GFTLConfig.cmake
+configure_package_config_file (cmake/GFTLConfig.cmake.in ${CMAKE_CURRENT_BINARY_DIR}/GFTLConfig.cmake
   INSTALL_DESTINATION ${cmake_dir}
   PATH_VARS cmake_dir
   )
-write_basic_package_version_file (GFTLConfig-version.cmake
+write_basic_package_version_file (${CMAKE_CURRENT_BINARY_DIR}/GFTLConfig-version.cmake
   VERSION ${GFTL_VERSION}
   COMPATIBILITY SameMajorVersion
   )
@@ -55,11 +55,11 @@ install (
   DESTINATION ${top_dir}/${cmake_dir}
   )
 
-message("Top dir ${top_dir}")
+
 # The following is needed for external projects using *nix make when
 # parent project builds gFTL as a subproject.
 set (GFTL_TOP_DIR "${CMAKE_INSTALL_PREFIX}/${top_dir}" CACHE PATH "")
-configure_file(GFTL.mk.in ${CMAKE_CURRENT_BINARY_DIR}/GFTL.mk @ONLY)
+configure_file(cmake/GFTL.mk.in ${CMAKE_CURRENT_BINARY_DIR}/GFTL.mk @ONLY)
 install (
   FILES ${CMAKE_CURRENT_BINARY_DIR}/GFTL.mk 
   DESTINATION "${top_dir}/include"

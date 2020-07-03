@@ -14,6 +14,10 @@
       . ```configure_package_config_file()
       . ```write_basic_package_version_file()```
 
+- Moved ./cmake_utils to ./cmake
+- Relocated config related files to ./cmake
+  
+
 
 
 ## [1.2.5] - 2020-04-06
