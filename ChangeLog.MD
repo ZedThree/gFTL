@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+## [2.0.0] - ????
+
+## Changed
+- Changed location of GFTLConfig.cmake
+
+    Now installed in a more conventional location:
+    ```./lib/cmake/GFTL/GFTLConfig.cmake```
+    Previous location was really a windows convention (first attempt).
+    Also now using
+      . ```configure_package_config_file()
+      . ```write_basic_package_version_file()```
+
+
+
 ## [1.2.5] - 2020-04-06
 
 ### Fixed
