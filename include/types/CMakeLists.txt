@@ -36,6 +36,7 @@ set (generated_incs)
 
 foreach (macro_file ${macro_files})
   foreach (param ${template_params})
+
     set (infile ${src}/${macro_file}.m4)
     if (${param} STREQUAL type)
       set (outfile ${macro_file}.inc)
@@ -46,7 +47,7 @@ foreach (macro_file ${macro_files})
 
     add_custom_command (
       OUTPUT ${outfile}
-      COMMAND m4 -s -Dparam=${param} -I${src}/../templates < ${infile} > ${outfile}
+      COMMAND ${M4} -s -Dparam=${param} -I${src}/../templates < ${infile} > ${outfile}
       WORKING_DIRECTORY ${bin}
       DEPENDS ${infile}
       )
@@ -60,8 +61,6 @@ add_custom_target (generate-type-incs
   DEPENDS ${generated_incs}
   )
 add_dependencies (gftl generate-type-incs)
-
-set_source_files_properties (${generated_incs} PROPERTIES GENERATED TRUE)
 
 install (DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/ DESTINATION "${dest}/include/types"
   FILES_MATCHING PATTERN "*.inc"

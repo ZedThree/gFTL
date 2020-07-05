@@ -17,20 +17,16 @@ set (macro_files
 # Empty list - will append in loop below
 set(generated_incs)
 
-find_program( m4_found "m4" )
-if( NOT m4_found )
-  message( SEND_ERROR "m4 program not found" )
-endif()
-
 foreach( macro_file ${macro_files} )
   foreach( param ${template_params} )
+
     set( infile ${src}/${macro_file}.m4 )
     set( outfile ${param}_${macro_file}.inc )
     set (outpath ${CMAKE_CURRENT_BINARY_DIR}/${outfile})
 
     add_custom_command (
       OUTPUT ${outfile}
-      COMMAND m4 -s -Dparam=${param} -I${src}/../templates < ${infile} > ${outfile}
+      COMMAND ${M4} -s -Dparam=${param} -I${src}/../templates < ${infile} > ${outfile}
       WORKING_DIRECTORY ${bin}
       DEPENDS ${infile}
       )
@@ -46,8 +42,6 @@ add_custom_target(
   )
 
 add_dependencies (gftl generate-template-incs)
-
-set_source_files_properties (${generated_incs} PROPERTIES GENERATED TRUE)
 
 file (COPY DIRECTORY . DESTINATION . FILES_MATCHING PATTERN "*.inc")
 
