@@ -20,6 +20,6 @@ add_custom_target (force-generation-of-includes ALL)
 add_dependencies (force-generation-of-includes gftl)
 
 install (TARGETS gftl EXPORT GFTL DESTINATION "${dest}/include")
-install (EXPORT GFTL DESTINATION "${dest}/lib/cmake/GFTL")
+install (EXPORT GFTL NAMESPACE gFTL:: DESTINATION "${dest}/lib/cmake/GFTL")
 
 
