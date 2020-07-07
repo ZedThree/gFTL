@@ -1,10 +1,6 @@
 add_subdirectory(SUT)
 
 
-include_directories (${PFUNIT_TOP_DIR}/include)
-link_directories(${PFUNIT_TOP_DIR}/lib)
-
-
 set (src ${CMAKE_CURRENT_SOURCE_DIR})
 set (bin ${CMAKE_CURRENT_BINARY_DIR})
 
@@ -55,7 +51,7 @@ foreach (instantiation ${instantiations})
 
   add_custom_command (
     OUTPUT ${pfunitfile}
-    COMMAND m4 -s -DKEY=${key} -DVALUE=${value} -DALT= -Dformat=${format} -I${GFTL_SOURCE_DIR}/include/templates < ${infile} > ${pfunitfile}
+    COMMAND m4 -s -DKEY=${key} -DVALUE=${value} -DALT= -Dformat=${format} -I${GFTL_SOURCE_DIR}/include-v1/templates < ${infile} > ${pfunitfile}
     WORKING_DIRECTORY ${bin}
     DEPENDS ${infile}
     )
@@ -70,7 +66,7 @@ foreach (instantiation ${instantiations})
 
   add_custom_command (
     OUTPUT ${pfunitfile}
-    COMMAND m4 -s -DKEY=${key} -DVALUE=${value} -DALT=alt -Dformat=${format} -I${GFTL_SOURCE_DIR}/include/templates < ${infile} > ${pfunitfile}
+    COMMAND m4 -s -DKEY=${key} -DVALUE=${value} -DALT=alt -Dformat=${format} -I${GFTL_SOURCE_DIR}/include-v1/templates < ${infile} > ${pfunitfile}
     WORKING_DIRECTORY ${bin}
     DEPENDS ${infile}
     )
@@ -91,6 +87,5 @@ add_pfunit_ctest (map_tests
   )
 
 target_include_directories (map_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
-target_include_directories (map_tests PRIVATE ${GFTL_SOURCE_DIR}/include)
 add_dependencies (tests map_tests)
 

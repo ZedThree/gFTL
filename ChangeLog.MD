@@ -22,7 +22,7 @@
   not require a Fortran compiler for installation, but Fortran is
   required to build the tests.  Previously, gFTL artificially included
   Fortran in the project LANGUAGES option to sidestep the issue.
-
+- Moved legacy 
 
 
 ## [1.2.5] - 2020-04-06
