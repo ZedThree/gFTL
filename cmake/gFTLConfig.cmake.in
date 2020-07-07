@@ -1,5 +1,5 @@
 # Package configuration file
 @PACKAGE_INIT@
 set (cmake_dir "@PACKAGE_cmake_dir@")
-include (${cmake_dir}/GFTL.cmake)
-check_required_components (GFTL)
+include (${cmake_dir}/gFTL.cmake)
+check_required_components (gFTL)

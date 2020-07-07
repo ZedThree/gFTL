@@ -1,4 +1,4 @@
-set (dest "GFTL-${GFTL_VERSION}")
+set (dest "gFTL-${gFTL_VERSION}")
 
 add_library (gftl-v1 INTERFACE)
 target_include_directories (gftl-v1 INTERFACE
@@ -17,7 +17,7 @@ add_subdirectory (types)
 add_custom_target (force-generation-of-includes ALL)
 add_dependencies (force-generation-of-includes gftl-v1)
 
-install (TARGETS gftl-v1 EXPORT GFTL DESTINATION "${dest}/include-v1")
-install (EXPORT GFTL NAMESPACE gFTL:: DESTINATION "${dest}/lib/cmake/GFTL")
+install (TARGETS gftl-v1 EXPORT gFTL DESTINATION "${dest}/include-v1")
+install (EXPORT gFTL NAMESPACE gFTL:: DESTINATION "${dest}/lib/cmake/gFTL")
 
 
