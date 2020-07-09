@@ -13,7 +13,15 @@ if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
   message("   Override with -DCMAKE_INSTALL_PREFIX=<path>.")
 endif ()
 
+# Some preprocessing tests can be run without the
+# Fortran testing framework.
+enable_testing()
 
+
+# v2
+add_subdirectory (include)
+
+# v1 legacy
 add_subdirectory (include-v1)
 add_subdirectory (examples)
 
@@ -39,7 +47,6 @@ if (CMAKE_Fortran_COMPILER)
     include (CheckFortranSource)
     include (CheckCompilerCapabilities)
 
-    enable_testing()
     if (NOT TARGET tests)
       add_custom_target(tests COMMAND ${CMAKE_CTEST_COMMAND})
     endif ()
