@@ -26,6 +26,11 @@
 - Changed capitalization of installation from GFTL to gFTL.
   Users should now use ```find_package(gFTL)```
 
+## Added
+- Support for type names.
+
+  This is to allow useful diagnostics via DTIO.
+  
 
 ## [1.2.5] - 2020-04-06
 
