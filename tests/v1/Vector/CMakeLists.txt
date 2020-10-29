@@ -46,7 +46,7 @@ foreach (type ${types} )
 
   add_custom_command (
     OUTPUT ${pfunitfile}
-    COMMAND m4 -s -Dparam=${type} -Dcompiler=${CMAKE_Fortran_COMPILER_ID} -I${gFTL_SOURCE_DIR}/include-v1/templates < ${infile} > ${pfunitfile}
+    COMMAND m4 -s -Dparam=${type} -Dcompiler=${CMAKE_Fortran_COMPILER_ID} -I${gFTL_SOURCE_DIR}/include/templates < ${infile} > ${pfunitfile}
     WORKING_DIRECTORY ${bin}
     DEPENDS ${infile}
     )
@@ -58,7 +58,7 @@ foreach (type ${types} )
 
   add_custom_command (
     OUTPUT ${pfunitfile}
-    COMMAND m4 -s -Dparam=${type} -Dcompiler=${CMAKE_Fortran_COMPILER_ID} -I${gFTL_SOURCE_DIR}/include-v1/templates < ${infile} > ${pfunitfile}
+    COMMAND m4 -s -Dparam=${type} -Dcompiler=${CMAKE_Fortran_COMPILER_ID} -I${gFTL_SOURCE_DIR}/include/templates < ${infile} > ${pfunitfile}
     WORKING_DIRECTORY ${bin}
     DEPENDS ${infile}
     )
